@@ -25,11 +25,25 @@ body {
     gap: 15px;
 }
 
-.display {
-    height: 100px;
-    text-align: right;
+.top {
     border: 2px solid grey;
     border-radius: 5px;
+}
+
+.display {
+    height: 50px;
+    text-align: right;
+    font-family: "Sono";
+    font-weight: 600;
+    font-size: 35px;
+}
+
+.result {
+    height: 50px;
+    text-align: right;
+    font-family: "Sono";
+    font-weight: 600;
+    font-size: 35px;
 }
 
 .bottom {
