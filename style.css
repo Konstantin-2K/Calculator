@@ -71,7 +71,7 @@ button {
     font-size: 18px;
 }
 
-.func {
+.func, .clear, .delete{
     background-color: #333332;
 }
 
