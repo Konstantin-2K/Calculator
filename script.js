@@ -16,7 +16,9 @@ for (let button of funcButtons) {
     button.addEventListener('click', appendFunc);
 }
 
-clearBtn.onclick = () => {
+clearBtn.addEventListener ('click', clear);
+
+function clear() {
     display.textContent = 0;
     result.textContent = '';
     firstNum = '';
@@ -40,7 +42,9 @@ equalsBtn.onclick = () => {
 }
 
 function displayDraw() {
-    if (display.textContent === '0') {
+    if (display.textContent === '0' || result.textContent !== '') {
+        display.textContent = '';
+        clear();
         display.textContent = '';
     }
     display.textContent += this.textContent;
@@ -52,6 +56,7 @@ let secondNum = '';
 let currentOperation = null;
 let resultNum = '';
 let expression = [];
+let newExpr = false;
 
 function evaluate() {
     let expression = display.textContent.split(currentOperation);
@@ -59,6 +64,9 @@ function evaluate() {
     secondNum = Number(expression[1]);
     if (secondNum === 0 && currentOperation === '/') {
         result.textContent = "Error!";
+    } else if(newExpr){
+        display.textContent = roundResult(operate(currentOperation, firstNum, secondNum));
+        newExpr = false;
     } else {
         result.textContent = roundResult(operate(currentOperation, firstNum, secondNum));
     }
@@ -70,6 +78,10 @@ function roundResult(num) {
 }
 
 function appendFunc() {
+    if (display.textContent.split(currentOperation).length === 2) {
+        newExpr = true;
+        evaluate();
+    }
     switch (this.textContent) {
         case "+":
             currentOperation = '+';
@@ -89,7 +101,6 @@ function appendFunc() {
     }
     if (!functions.includes(display.textContent.charAt(display.textContent.length - 1)) && result.textContent === '') {
         display.textContent += currentOperation;
-        evaluate();
     } if (result.textContent !== '') {
         display.textContent = `${result.textContent}${currentOperation}`;
         result.textContent = '';
@@ -135,12 +146,4 @@ function divide(a, b) {
 
 function percent(a, b) {
     return b * a / 100;
-}
-
-setInterval(logger, 2000);
-function logger() {
-    console.log(firstNum);
-    console.log(secondNum);
-    console.log(currentOperation);
-    console.log(resultNum);
 }
