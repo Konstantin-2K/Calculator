@@ -69,6 +69,13 @@ button {
     font-family: "Sono";
     font-weight: 600;
     font-size: 18px;
+    transition-duration: 0.4s;
+}
+
+.button:hover {
+    background-color: #111111;
+    width: 45px;
+    height: 45px;
 }
 
 .func,
