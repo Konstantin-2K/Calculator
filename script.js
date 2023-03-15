@@ -47,7 +47,14 @@ function displayDraw() {
         clear();
         display.textContent = '';
     }
-    display.textContent += this.textContent;
+    if (this.textContent === '.' && display.textContent.charAt(display.textContent.length - 1) === '.') {
+        return;
+    } else if (this.textContent === '.' && display.textContent === '') {
+        display.textContent = '0.';
+    } else {
+        display.textContent += this.textContent;
+    }
+
 }
 
 const functions = ['+', '-', '*', '/', '%'];
