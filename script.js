@@ -16,7 +16,7 @@ for (let button of funcButtons) {
     button.addEventListener('click', appendFunc);
 }
 
-clearBtn.addEventListener ('click', clear);
+clearBtn.addEventListener('click', clear);
 
 function clear() {
     display.textContent = 0;
@@ -64,7 +64,7 @@ function evaluate() {
     secondNum = Number(expression[1]);
     if (secondNum === 0 && currentOperation === '/') {
         result.textContent = "Error!";
-    } else if(newExpr){
+    } else if (newExpr) {
         display.textContent = roundResult(operate(currentOperation, firstNum, secondNum));
         newExpr = false;
     } else {
